@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Demo</title>
 </head>
 
 <style>
@@ -58,22 +58,6 @@
 		margin-left: 25px;
 	}
 </style>
-<script src="jquery-1.8.3.min.js"></script>
-<script>
-	$(function(){
-		// $('.ul1 li').click(function(){
-		// 	var data=$(this).children('.detail').children('a').length*26+30
-		// 	$(this).animate({height:data}).siblings('li').animate({height:30});
-		// })
-		$('.detail').hide();
-		$('h4').click(function(){
-			$(this).next().slideToggle().parent('li').siblings().children('.detail').slideUp();
-			$(this).children().html()=='+'?$(this).children().html('-'):$(this).children().html('+');
-			$('h4').children('span').not($(this).children('span')).html('+');
-		})
-
-	})
-</script>
 <body>
 	<div id="list">
 		<ul class="ul1">
@@ -153,6 +137,22 @@
 	</div>
 	<div id="line"></div>
 	<iframe id="content" src="0-0.html" width="75%" height="620" frameborder="0"></iframe>
+	<script src="jquery-1.8.3.min.js"></script>
+	<script>
+	$(function(){
+		// $('.ul1 li').click(function(){
+		// 	var data=$(this).children('.detail').children('a').length*26+30
+		// 	$(this).animate({height:data}).siblings('li').animate({height:30});
+		// })
+		$('.detail').hide();
+		$('h4').click(function(){
+			$(this).next().slideToggle().parent('li').siblings().children('.detail').slideUp();
+			$(this).children().html()=='+'?$(this).children().html('-'):$(this).children().html('+');
+			$('h4').children('span').not($(this).children('span')).html('+');
+		})
+
+	})
+	</script>
 	<script>
 		$('.ul1 li').click(function(){
 			var now=$(this).index()+1;
