@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin: 0;padding: 0;}
+	.list{width:700px;overflow:hidden;position:relative;height: 402px;float: left;margin:10px 0 0 30px;	}
+	.list ul{width: 4900px;position:absolute;height: 402px;float: left;}
+	.list li img{width: 700px;height: 402px;}
+	li{list-style: none;float: left;width: 700px;height: 402px;	}
+	.btn{width: 200px;height: 20px;float: left;position: absolute;top: 350px;left: 270px}
+	.btn span{width: 20px;height:20px;background: #ccc;border-radius: 50%;float: left;margin-right: 10px;cursor: pointer;}
+	.btn .on{background: #CC1B47;}
+	.arrow{width: 40px;height: 60px;font-size: 36px;font-weight:bold;background-color:rgba(0,0,0,.3); color: #fff;line-height: 60px;text-align: center;position: absolute;top: 170px;z-index: 2;}
+	#prev{left: 55px;}
+	#next{left: 600px;}
+</style>
+<!-- <script src="jquery-1.12.1.js"></script> -->
+<!-- <script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script> -->
+
+<script>
+	// $(function(){	
+
+	// 	$('#next').click(function(){
+	// 		$('#ul').finish();
+	// 		if (index==4) 
+	// 		{
+	// 			index=0;
+	// 			$('#ul').css({'top':-402})
+	// 		}
+	// 		else{
+	// 			index++;
+	// 		}
+			
+	// 		slide(-402)
+
+	// 		showbtn(index)
+	// 	});
+
+	// 	$('#prev').click(function(){
+	// 		$('#ul').finish();
+	// 		if (index==0) 
+	// 		{
+	// 			index=4;
+	// 			$('#ul').css({'top':-2010})
+	// 		}
+	// 		else{
+	// 			index--;
+	// 		}
+			
+	// 		slide(402);
+			
+	// 		showbtn(index)
+	// 	});
+
+	// 	function slide(offset){
+		
+	// 		$('#ul').stop().animate({top:parseInt($('#ul').position().top+offset)})
+	// 	}
+	// 	var index=0;
+	// 	var btn=$('#btn span');
+	// 	function showbtn(index){
+	// 		$('#btn span').eq(index).addClass('on').siblings().removeClass('on');
+	// 	}
+			
+	// 	$('#btn span').click(function(){
+	// 		$('#ul').finish();
+	// 		var num=$(this).index();
+	// 		$('#ul').animate({top:parseInt($('#ul').position().top+(num-index)*-402)})
+	// 		showbtn(num);
+	// 		index=num;
+	// 	})
+		
+	// })
+
+// window.onload=function(){
+// 	var ul=document.getElementById('ul');
+// 	var btn=document.getElementById('btn').getElementsByTagName('span');
+// 	var prev=document.getElementById('prev');
+// 	var next=document.getElementById('next');
+// 	var pp=false;
+// 	function _animate(offset){
+// 		var newLeft=parseInt(ul.style.left)+offset;
+// 		var speed=offset/25;
+
+// 			function go(){
+// 			if (speed>0&&parseInt(ul.style.left)<newLeft||speed<0&&parseInt(ul.style.left)>newLeft) {
+// 			ul.style.left=parseInt(ul.style.left)+speed+'px';
+// 				setTimeout(go,10);
+// 				pp=true;
+// 			}	
+// 			else{
+				
+// 				ul.style.left=newLeft+'px';
+// 				if (parseInt(ul.style.left)==-4200) {
+// 					ul.style.left=-700+'px';
+// 				}
+// 				if (parseInt(ul.style.left)==0) {
+// 					ul.style.left=-3500+'px';
+// 				}
+// 				pp=false;
+// 			}
+// 		}
+
+// 		go();
+// 	};
+// var index=0;
+// 	function btn1(){
+// 		for (var i = 0; i < btn.length; i++) {
+// 			btn[i].className='';
+// 		}
+// 		btn[index].className='on';
+// 	}
+	
+// 	next.onclick=function()
+// 	{
+// 		if(pp==true){
+// 			return
+// 		}
+// 		if (index==4) {
+// 			index=0;
+// 		}
+// 		else{
+// 			index++;
+// 		}
+// 		if (pp==false) 
+// 		{
+// 			_animate(-700);
+// 		}
+		
+// 		btn1();
+
+// 	}
+
+// 	prev.onclick=function()
+// 	{
+// 		if (pp==true) {
+// 			return
+// 		}
+// 		if (index==0) {
+// 			index=4;
+// 		}
+// 		else{
+// 			index--;
+// 		}
+// 		if (pp==false) 
+// 		{
+// 			_animate(700);
+// 		}
+		
+// 		btn1();
+// 	}
+// 	var num=0;
+// 	for (var i = 0; i < btn.length; i++) {
+// 		btn[i].num=i;
+// 		btn[i].onclick=function(){
+// 				console.log(index)
+// 			for (var i = 0; i < btn.length; i++) {
+// 				btn[i].className='';
+// 			}
+// 			btn[this.num].className='on';
+// 			var new1=btn[this.num].num;
+// 			console.log(new1)
+// 			if (pp==false) 
+// 				{
+// 					_animate((new1-index)*-700)
+// 				}
+			
+// 			index=new1;
+			
+// 		}
+// 	}
+	
+// 	}
+// $(function(){
+
+// var index=1;
+// $('#next').on('click',function(){
+// 	$('#ul').finish();
+//         slide(-700);
+//     })
+
+// $('#prev').on('click',function(){
+// 		$('#ul').finish();
+//         slide(700);
+//     })
+
+// function slide(offset)
+// {
+// 	if (offset<0) 
+// 	{
+		
+// 		if (index==5) 
+// 		{
+// 			index=1;
+// 			$('#ul').css({'left':0})
+// 		}
+// 		else
+// 		{
+// 			index++
+// 		}
+// 	}
+// 	if (offset>0)
+// 	{ 
+// 		if (index==1) 
+// 		{
+// 			index=5;
+// 			$('#ul').css({'left':-4200})
+// 		}
+// 		else
+// 		{
+// 			index--
+// 		}
+// 	}
+
+// 	$('#ul').stop().animate({'left':$('#ul').position().left+offset});	
+// 	showBtn(index)
+// }
+// function showBtn(index)
+// 	{
+// 		$('#btn span').eq(index-1).addClass('on').siblings().removeClass('on');
+// 	}
+// $('#btn span').on('click',function(){
+// 	$('#ul').finish();
+// 		var num=$(this).index()+1;
+// 		$('#ul').stop().animate({'left':$('#ul').position().left-700*(num-index)});
+// 		index=num;
+// 		showBtn(index);	
+// 	}) 
+// var timer=null;
+// 	$('#list').mouseout(function(){
+// 		play()
+// 	})
+// 	play()
+
+// 	$('#list').mouseover(function(){
+// 		clearInterval(timer)
+// 	})
+// 	function play()
+// 	{
+// 		clearInterval(timer);
+// 		timer=setInterval(function(){
+// 			slide(-700);
+// 		},1000)
+// 	}
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*var index=1;
+	$('#next').on('click',function(){
+          
+			if (index==5) 
+			{
+				index=1;
+				$('#ul').css({'left':0})
+			}
+			else
+			{
+				index++;
+			}
+			$('#ul').stop().animate({'left':$('#ul').position().left-700})	
+			$('.btn span').eq(index-1).addClass('on').siblings().removeClass('on');
+			//console.log($('#ul').position().left)
+	})
+		$('#prev').on('click',function(){
+         
+		
+		if (index==1) 
+			{
+				index=5;
+				$('#ul').css({'left':-4200})  
+			}
+			else
+			{
+				index--;
+			}
+			$('#ul').stop().animate({'left':$('#ul').position().left+700})	
+			$('.btn span').eq(index-1).addClass('on').siblings().removeClass('on');
+ //console.log($('#ul').position().left)
+	})
+		
+		$('.btn span').on('click',function(){
+			console.log(index)
+			var num=$(this).index()+1;
+			$('#ul').stop().animate({'left':$('#ul').position().left-700*(num-index)})
+			index=num;	
+			$('.btn span').eq(index-1).addClass('on').siblings().removeClass('on');
+		})
+		var timer=null
+		function move()
+		{
+			clearInterval(timer)
+			timer=setInterval(function(){
+
+			if (index==5) 
+			{
+				index=1;
+				$('#ul').css({'left':0})
+			}
+			else
+			{
+				index++;
+			}
+				$('#ul').stop().animate({'left':$('#ul').position().left-700})	
+				$('.btn span').eq(index-1).addClass('on').siblings().removeClass('on');
+	
+			},2000)
+		}; move();
+
+		$('.list').mouseover(function(){
+			clearInterval(timer)
+		})
+		$('.list').mouseout(function(){
+			move()
+		})
+})
+*/
+
+	window.onload=function()
+	{		
+			var list=document.getElementById('list');
+			var ul=document.getElementsByTagName('ul')[0];
+			var li=ul.getElementsByTagName('li');
+			var next=document.getElementById('next');
+			var prev=document.getElementById('prev');
+			var btn=document.getElementById('btn').getElementsByTagName('span');
+			var pp=false;
+		function move(offfset)
+		{ 
+			var newLeft=parseInt(ul.style.left)+offfset;
+			var speed=offfset/25;
+			function go()
+			{
+			if (speed>0&&parseInt(ul.style.left)<newLeft||speed<0&&parseInt(ul.style.left)>newLeft) 
+			{
+				pp=true;
+				ul.style.left=parseInt(ul.style.left)+speed+'px';
+				setTimeout(go,10)
+			}
+			else
+			{
+				pp=false;
+				ul.style.left=newLeft+'px';
+				if (parseInt(ul.style.left)==0)
+				 {
+				 	ul.style.left=-3500+'px';
+				 }
+				 if (parseInt(ul.style.left)==-4200)
+				  {
+				  	ul.style.left=-700+'px';
+				  }
+			}
+		}
+		go()
+		}
+		var index=0;
+		function button()
+		{
+			for (var i = 0; i < btn.length; i++) 
+			{
+				btn[i].className='';
+			}
+			btn[index].className='on';
+		}
+		next.onclick=function()
+		{
+			if (pp==true) 
+			{
+				return;
+			}
+			if (index==4) 
+			{
+				index=0;
+			}
+			else
+			{
+				index++;
+			}
+			if (pp==false) 
+			{
+				move(-700)
+			}
+			
+			button();
+		}
+		prev.onclick=function()
+		{
+			if (pp==true) 
+			{
+				return;
+			}
+			if (index==0) 
+			{
+				index=4;
+			}
+			else
+			{
+				index--;
+			}
+			if (pp==false)
+			 {
+			 	move(700);
+			 }
+			
+			button()
+		}
+		var num;
+		for (var i = 0; i < btn.length; i++) {
+			btn[i].num=i;
+			btn[i].onclick=function()
+			{
+				var newindex=this.num;
+				var offfset=(newindex-index)*-700;
+				if (pp==false) 
+				{
+					move(offfset);
+				}
+ 				index=newindex;
+				button()
+			}
+		}
+	}
+</script>
+<body>
+	<div class="list" id="list">
+		<ul style="left: -700px;" id="ul">
+			<li><img src="images/zna2l9zs.jpg" alt=""></li>
+			<li><img src="images/4n3pzv6l.jpg" alt=""></li>
+			<li><img src="images/b5an8hdo.jpg" alt=""></li>
+			<li><img src="images/m8xer5bd.jpg" alt=""></li>
+			<li><img src="images/sxkfohfa.jpg" alt=""></li>
+			<li><img src="images/zna2l9zs.jpg" alt=""></li>
+			<li><img src="images/4n3pzv6l.jpg" alt=""></li>
+		</ul>
+	
+	<div class="btn" id="btn">
+		<span class="on"></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<a href="javascript:;" id="prev" class="arrow">&lt;</a>
+   	<a href="javascript:;" id="next" class="arrow">&gt;</a>
+   	</div>
+</body>
+</html>

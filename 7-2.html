@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<style>
+    .div1{
+        border: 1px dotted #000;
+        background: #ccc;
+        color: green;
+        padding-left: 30px;
+    }
+	#div2,input{
+		font-size: 18px;
+	}
+</style>
+<body>
+    <div class="div1">
+
+         var arr=[[4,'dasd'],[5,'dasd'],[1,'dasd'],[2,'dasd'],[3,'dasd'],[13,'dasd'],[23,'dasd']];<br>
+		//var arr=[53,42,3,24,1,55,42,123,566,5511,122];<br>
+		var temp=0;<br>
+		for (var i = 0; i < arr.length; i++) {<br>
+			for (var j = 0; j < arr.length-1-i; j++) {<br>
+				if (arr[j][0]>=arr[j+1][0]) <br>
+				{<br>
+					temp=arr[j+1];<br>
+					arr[j+1]=arr[j];<br>
+					arr[j]=temp;<br>
+				}<br>
+			}<br>
+		}<br>
+		console.log(arr);<br>
+    </div>
+    <br>
+    <center>
+        <input id="btn1" type="button" value="输出结果"><br><br>
+        <div id="div2"></div>
+    </center>
+    
+<script>
+    var arr=[[4,'dasd'],[5,'dasd'],[1,'dasd'],[2,'dasd'],[3,'dasd'],[13,'dasd'],[23,'dasd']];
+	//var arr=[53,42,3,24,1,55,42,123,566,5511,122];
+	var temp=0;
+	for (var i = 0; i < arr.length; i++) {
+		for (var j = 0; j < arr.length-1-i; j++) {
+			if (arr[j][0]>=arr[j+1][0]) 
+			{
+				temp=arr[j+1];
+				arr[j+1]=arr[j];
+				arr[j]=temp;
+			}
+		}
+	}
+	var btn=document.getElementById('btn1');
+    var div2=document.getElementById('div2')
+    btn.onclick=function(){
+        div2.innerHTML=arr;
+    }
+</script>
+</body>
+</html>

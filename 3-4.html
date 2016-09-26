@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<link rel="stylesheet" href="miaov_style.css">
+<style>
+	*{margin:0;padding:0;}
+#pingfen{ width:135px;margin:10px auto;height:28px;}
+#pingfen li{ width:27px;float:left;height:28px; cursor:pointer;background:url(images/star.gif) no-repeat 0 0; list-style:none;}
+</style>
+<script>
+	window.onload=function()
+	{
+		var ul=document.getElementById('pingfen');
+		var li=ul.getElementsByTagName('li');
+		var p=ul.getElementsByTagName('p')[0];
+		var aData=['很差','较差','一般','推荐','很好' ]
+		for (var i = 0; i < li.length; i++) {
+			li[i].index=i;
+			li[i].onmouseover=function(){
+				p.style.display='block';
+				for (var i = 0; i <=this.index; i++) {
+					li[i].style.background='url(images/star.gif) no-repeat 0 -29px';
+					p.innerHTML=aData[this.index];
+				}
+			}
+
+			li[i].onmouseout=function(){
+				p.style.display='none';
+				for (var i = 0; i <=this.index; i++) {
+					li[i].style.background='url(images/star.gif) no-repeat 0 0px';
+				}
+			}
+			li[i].onclick=function(){
+				p.innerHTML=aData[this.index];
+				alert(this.index+1+'分')
+			}
+		}
+
+	}
+</script>
+<body>
+	<ul id="pingfen">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<p style="display: none;">一般</p>
+	</ul>
+</body>
+</html>

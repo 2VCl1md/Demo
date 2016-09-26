@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#list{
+		float: left;
+		width: 280px;
+		padding:10px;
+		border:3px solid #999;
+		border-radius: 10px;
+	}
+	.ul1{
+		width: 280px;
+				
+	}
+	.ul1 li{
+		list-style: none;
+		background: #09F;
+		border-bottom:1px  solid #fff;
+		text-indent: 20px;
+		line-height: 30px;
+		cursor: pointer;
+	}
+	h4{
+		color: #fff;
+		width: 270px;
+	}
+	h4 span{
+		float: right;
+	}
+	.detail a{
+		display: block;
+		width: 280px;
+		height: 26px;
+		line-height: 30px;
+		background: #26C66A;
+		opacity: 0.9;
+		border-bottom: 1px solid #fff;
+		color:#fff;
+		text-decoration: none;
+	}
+	#content{
+		float: right;
+	}
+	#line{
+		width: 4px;
+		height: 620px;
+		background: #ddd;
+		float: left ;
+		margin-left: 25px;
+	}
+</style>
+<script src="jquery-1.8.3.min.js"></script>
+<script>
+	$(function(){
+		// $('.ul1 li').click(function(){
+		// 	var data=$(this).children('.detail').children('a').length*26+30
+		// 	$(this).animate({height:data}).siblings('li').animate({height:30});
+		// })
+		$('.detail').hide();
+		$('h4').click(function(){
+			$(this).next().slideToggle().parent('li').siblings().children('.detail').slideUp();
+			$(this).children().html()=='+'?$(this).children().html('-'):$(this).children().html('+');
+			$('h4').children('span').not($(this).children('span')).html('+');
+		})
+
+	})
+</script>
+<body>
+	<div id="list">
+		<ul class="ul1">
+			<li>
+				<h4 href="javascript:;">基础Demo-1 （7）<span>+</span></h4>
+				<div class="detail" id="a">
+					<a href="javascript:;">1-1 div样式设置</a>
+					<a href="javascript:;">1-2 排序</a>
+					<a href="javascript:;">1-3 选项卡</a>
+					<a href="javascript:;">1-4 分享到</a>
+					<a href="javascript:;">1-5 跟随鼠标的div</a>
+					<a href="javascript:;">1-6 简易日历</a>
+					<a href="javascript:;">1-7 全选反选不选</a>
+				</div>
+			</li>
+			<li>
+				<h4 href="javascript:;">基础Demo-2 （6）<span>+</span></h4>
+				<div class="detail">
+					<a href="javascript:;">2-1 拖拽</a>
+					<a href="javascript:;">2-2 进度条</a>
+					<a href="javascript:;">2-3 折角效果</a>
+					<a href="javascript:;">2-4 滑动的菜单</a>
+					<a href="javascript:;">2-5 淡入淡出效果</a>
+					<a href="javascript:;">2-6 简单打字机效果</a>
+				</div>
+			</li>
+			<li>
+				<h4 href="javascript:;">基础Demo-3 （5）<span>+</span></h4>
+				<div class="detail">
+					<a href="javascript:;">3-1 简易时钟</a>
+					<a href="javascript:;">3-2 旋转的正方体</a>
+					<a href="javascript:;">3-3 CSS3动画系列</a>
+					<a href="javascript:;">3-4 评分效果</a>
+					<a href="javascript:;">3-5 邮箱检验</a>
+				</div>
+			</li>
+			<li>
+				<h4 href="javascript:;">基础Demo-4 （7）<span>+</span></h4>
+				<div class="detail">
+					<a href="javascript:;">4-1 文字循环滚动</a>
+					<a href="javascript:;">4-2 防新浪微博</a>
+					<a href="javascript:;">4-3 手风琴效果</a>
+					<a href="javascript:;">4-4 放大镜效果</a>
+					<a href="javascript:;">4-5 计算器</a>
+					<a href="javascript:;">4-6 防苹果菜单</a>
+					<a href="javascript:;">4-7 简易抽奖</a>
+				</div>
+			</li>
+			<li>
+				<h4 href="javascript:;">基础Demo-5 （4）<span>+</span></h4>
+				<div class="detail">
+					<a href="javascript:;">5-1 无缝滚动</a>
+					<a href="javascript:;">5-2 JQ轮播图</a>
+					<a href="javascript:;">5-3 原生JS轮播图</a>
+					<a href="javascript:;">5-4 原生JS淡入淡出</a>
+				</div>
+			</li>
+			<li>
+				<h4 href="javascript:;">基础Demo-6 （4）<span>+</span></h4>
+				<div class="detail">
+					<a href="javascript:;">6-1 百度搜索</a>
+					<a href="javascript:;">6-2 canvas画板</a>
+					<a href="javascript:;">6-3 尖边框的实现</a>
+					<a href="javascript:;">6-4 自定义右键菜单</a>
+				</div>
+			</li>
+			<li>
+				<h4 href="javascript:;">基础Demo-7 （4）<span>+</span></h4>
+				<div class="detail">
+					<a href="javascript:;">7-1 call和apply方法</a>
+					<a href="javascript:;">7-2 冒泡排序</a>
+					<a href="javascript:;">7-3 快速排序</a>
+					<a href="javascript:;">7-4 枚举算法</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div id="line"></div>
+	<iframe id="content" src="0-0.html" width="75%" height="620" frameborder="0"></iframe>
+	<script>
+		$('.ul1 li').click(function(){
+			var now=$(this).index()+1;
+			$('.detail a').click(function(){
+				var a=$(this).index()+1;
+				$('#content').attr('src',''+now+'-'+a+'.html')
+			})
+		})
+	</script>
+</body>
+</html>

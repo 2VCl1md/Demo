@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style id="css">
+	#wrap{
+		width: 200px;
+		height: 200px;
+		border:2px solid #000;
+		border-radius: 50%;
+		position: relative;
+		margin: 100px auto;
+	}
+	ul{
+		list-style: none;
+		position: relative;
+		margin: 0;
+		padding: 0;
+		height: 200px;
+	}
+	li{
+		position: absolute;
+		top: 0;
+		left: 99px;
+		height: 6px;
+		width: 2px;
+		background: #000;
+		transform-origin: center 100px;
+	}
+	li:nth-of-type(5n+1){
+		height: 12px;
+	}
+	#hour{
+		position: absolute;
+		width: 6px;
+		height: 45px;
+		background: #000;
+		left: 99px;
+		top: 55px;
+		transform-origin:bottom;
+	}
+	#min{
+		position: absolute;
+		width: 4px;
+		height: 65px;
+		background: #999;
+		left: 100px;
+		top: 35px;
+		transform-origin:bottom;
+	}
+	#sec{
+		position: absolute;
+		width: 2px;
+		height: 80px;
+		background: red;
+		left: 100px;
+		top: 20px;
+		transform-origin:bottom;
+	}
+	.ico{
+		width: 16px;height: 16px;
+		background: #000;
+		border-radius: 50%;
+		position: absolute;
+		left: 94px;
+		top: 94px;
+	}
+</style>
+<body>
+	<div id="wrap">
+		<ul>
+		</ul>
+		<div id="hour"></div>
+		<div id="min"></div>
+		<div id="sec"></div>
+		<div class="ico"></div>
+	</div>
+	<script>
+	window.onload=function(){
+		var ul=document.getElementsByTagName('ul')[0];
+		var css=document.getElementById('css');
+		var hour=document.getElementById('hour');
+		var min=document.getElementById('min');
+		var sec=document.getElementById('sec');
+
+		var li='';
+		var scss='';
+		for (var i = 0; i < 60; i++) {
+			scss+="#wrap ul li:nth-of-type("+(i+1)+"){transform:rotate("+i*6+"deg);}";
+			li+='<li></li>';
+		}
+		ul.innerHTML=li;
+		css.innerHTML+=scss;
+		time();
+		setInterval(time,1000)
+		
+		function time(){
+			var date=new Date();
+			var isecond=date.getSeconds();
+			var imin=date.getMinutes()+isecond/60;
+			var ihour=date.getHours()+imin/60;
+			sec.style.transform="rotate("+isecond*6+"deg)";
+			min.style.transform="rotate("+imin*6+"deg)";
+			hour.style.transform="rotate("+ihour*30+"deg)";
+
+		}
+	}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	#btn1{
+		width: 310px;
+		height: 40px;
+		margin: 0;padding: 0;
+	}
+	#ul1{
+		width: 312px;
+		margin: 0;padding: 0;
+		border:1px solid #000;
+		display: none;	
+		list-style: none;
+	}
+	li a{
+		display: block;
+		width: 300px;
+		line-height: 30px;
+		padding: 5px;
+		text-decoration: none;
+		width: 302px;
+
+	}
+	li a:hover{
+		background: #ccc;
+		opacity: 0.7;
+	}
+	#btn2{
+		width: 90px;
+		height: 40px;
+		line-height: 40px;
+		cursor: pointer;
+		border: 1px solid #ddd;
+		display: inline-block;
+		text-align: center;
+		font-weight: 700;
+		color: #fff;
+		background:#3385ff;
+	}
+	div{
+		width: 500px;
+		margin:0 auto;
+	}
+</style>
+<script>
+function wclimb(data){
+	if (data.s.length) {
+
+		var ul1=document.getElementById('ul1');
+		ul1.style.display='block';
+		var html='';
+		for (var i = 0; i < data.s.length; i++) {
+			html+='<li><a target="" href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=baidu&wd='+data.s[i]+'">'+data.s[i]+'</a></li>'
+		}
+		ul1.innerHTML=html;
+	}
+	else{
+		ul1.style.display='none';
+	}
+}
+	window.onload=function(){
+		var btn=document.getElementById('btn1');
+		var ul1=document.getElementById('ul1');
+		var btn2=document.getElementById('btn2');
+			btn2.onclick=function(){
+			btn2.href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=baidu&wd="+btn.value+"";
+		}
+		btn.onkeyup=function(){
+			if (this.value!='') {
+				var script=document.createElement('script');
+				script.src='http://suggestion.baidu.com/su?wd='+this.value+'&cb=wclimb';
+				document.body.appendChild(script);
+			}
+			else{
+				ul1.style.display='none';
+			}
+			
+		}
+	}
+</script>
+<body>
+<div>
+	<input type="text" id="btn1" />
+	<a id="btn2">搜索</a>
+	<ul id="ul1">
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+	</ul>
+</div>
+	
+</body>
+</html>

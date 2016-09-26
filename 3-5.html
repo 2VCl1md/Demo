@@ -1,0 +1,23 @@
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	window.onload=function()
+	{
+		var txt=document.getElementById('txt1');
+		var btn=document.getElementById('btn1');
+		btn.onclick=function()
+		{
+			var re=/^\w+@[0-9a-z]+\.[a-z]{2,4}$/;
+			if (re.test(txt.value)) {alert('对了')} else {alert('错了')}
+		}
+	}
+</script>
+<body>
+	<input id="txt1" type="text" />
+	<input id="btn1" type="button" value="提交" />
+</body>
+</html>
