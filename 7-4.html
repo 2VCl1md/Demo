@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	a{
+		text-decoration: none;
+	}
+	a:visited{
+		color: red;
+	}
+</style>
+<script>
+	window.onload=function(){
+		var a=document.getElementsByTagName('a');
+		var ul1=document.getElementById('ul1');
+		var li=ul1.getElementsByTagName('li');
+		for (var i = 0; i < a.length; i++) {
+			a[i].onclick=function(){
+				var newLi=document.createElement('li');
+				newLi.innerHTML=this.innerHTML;
+
+				if (mj(this.innerHTML)) { //如果ul里有这个元素就不往里面添加
+
+					if(!li[0]){
+						ul1.appendChild(newLi);
+					}
+					else{
+						ul1.insertBefore(newLi,li[0]);
+					}
+				}else{
+					mj2(this.innerHTML)
+				}
+
+			}
+		}
+		function mj(text){
+			var result=true;
+
+			for (var i = 0; i < li.length; i++) {
+				if(li[i].innerHTML==text){
+					result=false;
+				}
+			}
+			return result;
+		}
+
+		function mj2(text){
+			for (var i = 0; i < li.length; i++) {
+				if (li[i].innerHTML==text) {
+					ul1.insertBefore(li[i],li[0]);
+				}
+			}
+			
+		}
+	}
+</script>
+<body>
+	<a href="#">南昌</a>
+	<a href="#">北京</a>
+	<a href="#">深圳</a>
+	<a href="#">上海</a>
+	<a href="#">天津</a>
+	<a href="#">杭州</a>
+	<ul id="ul1">
+		
+	</ul>
+</body>
+</html>

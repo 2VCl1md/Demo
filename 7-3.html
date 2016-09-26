@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<style>
+    .div1{
+        border: 1px dotted #000;
+        background: #ccc;
+        color: green;
+        padding-left: 30px;
+    }
+	#div2,input{
+		font-size: 18px;
+	}
+</style>
+<body>
+    <div class="div1">
+
+        function quicksort(arr){<br>
+		if (arr.length<=1) {<br>
+			return arr;<br>
+		}<br>
+		var left=[];<br>
+		var right=[];<br>
+		var mid=Math.floor(arr.length/2);<br>
+		var val=arr.splice(mid,1)<br>
+		for (var i = 0; i < arr.length; i++) {<br>
+			if (arr[i]>val) {<br>
+				right.push(arr[i])<br>
+			}<br>
+			else{<br>
+				left.push(arr[i])<br>
+			}<br>
+		}<br>
+		return quicksort(left).concat([val],quicksort(right));<br>
+	}<br>
+		console.log(quicksort([21,555,31,1,848,3,44,6]));<br>
+    </div>
+    <br>
+    <center>
+        <input id="btn1" type="button" value="输出结果"><br><br>	
+        <div id="div2"></div>
+    </center>
+    
+<script>
+    function quicksort(arr){
+		if (arr.length<=1) {
+			return arr;
+		}
+		var left=[];
+		var right=[];
+		var mid=Math.floor(arr.length/2);
+		var val=arr.splice(mid,1)
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i]>val) {
+				right.push(arr[i])
+			}
+			else{
+				left.push(arr[i])
+			}
+		}
+		return quicksort(left).concat([val],quicksort(right));
+	}
+	var btn=document.getElementById('btn1');
+    var div2=document.getElementById('div2')
+    btn.onclick=function(){
+        div2.innerHTML=quicksort([21,555,31,1,848,3,44,6]);
+    }
+</script>
+</body>
+</html>

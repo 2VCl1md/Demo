@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin: 0;padding: 0;}
+	img{width: 200px;height: 115px;}
+	#div1{width: 800px;height: 115px;background: red;margin:50px auto;position: relative;overflow: hidden;}
+	ul li{list-style: none;float: left;}
+	ul{position: absolute;top: 0px;left: 0;}
+	#btn1{position: absolute; font-size: 20px;left: 10px;}
+
+	#btn2{position: absolute; font-size: 20px;right: 10px;}
+</style>
+</style>
+<body>
+<script>
+	window.onload=function()
+	{
+		var oUl=document.getElementsByTagName('ul')[0];
+		var oLi=oUl.getElementsByTagName('li');
+		var btn1=document.getElementById('btn1');
+		var btn2=document.getElementById('btn2');
+		var timer=null;
+		var iSpeed=5;
+		
+		oUl.innerHTML+=oUl.innerHTML;
+		oUl.style.width=oLi[0].offsetWidth*oLi.length+'px';
+		function move(){
+			
+				if (oUl.offsetLeft<-oUl.offsetWidth/2) {oUl.style.left=0;}
+				 else if (oUl.offsetLeft>0) 
+				 	{oUl.style.left=-oUl.offsetWidth/2+'px';}
+				 oUl.style.left=oUl.offsetLeft+iSpeed+'px';
+				}
+		timer=setInterval(move,30);
+		btn1.onclick=function()
+		{
+			iSpeed=-5;
+		}
+		btn2.onclick=function()
+		{
+			iSpeed=5;
+		}
+		oUl.onmouseover=function()
+		{
+			clearInterval(timer);
+		}
+		oUl.onmouseout=function()
+		{
+			
+				timer=setInterval(move,30);
+		}
+	}
+</script>
+<input id="btn1" type="button" value="向左" />
+
+<input id="btn2" type="button" value="向右" />
+<div id="div1">
+
+<ul>
+	<li><img src="images/2015-11-28_094327.png" alt=""></li>
+	<li><img src="images/2015-11-28_094504.png" alt=""></li>
+	<li><img src="images/2015-12-01_105136.png" alt=""></li>
+	<li><img src="images/pic.png" alt=""></li>
+</ul>
+	</div>
+	
+	
+</body>
+</html>

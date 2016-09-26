@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>css 尖边框的实现</title>
+		<style type="text/css">
+
+.tipbox:before,.tipbox:after {
+	content: "";
+	position: absolute;
+	border-style: dashed dashed  solid   dashed;
+	line-height: 1;
+	display: inline-block;
+}
+
+.tipbox:after {
+	left: 75px;
+	border-color: transparent transparent #D7DADB;
+	border-width: 11px;
+	top: -22px;
+	z-index: 1080
+}
+
+.tipbox:before {
+	left: 76px;
+	border-color: transparent transparent #FFF;
+	border-width: 10px;
+	top: -19px;
+	z-index: 1081
+}
+.tipbox {
+	position: absolute;
+	top: 30px;
+	left: 65px;
+	width: 150px;
+	color: #0DBA8F;
+	background-color: #FFF;
+	border: 1px solid #D7DADB;
+	display: block;
+	padding: 5px;
+	text-align: center;
+	border-radius: 2px;
+	word-wrap: break-word;
+	break-word: break-all;
+
+  }
+		</style>
+	</head>
+	<body>
+	 <div class="tipbox"> 
+	   <br /> 
+	   <ul> 
+	    <li>列表一列表一列表一列表一</li> 
+	    <li>列表一列表一列表一列表一</li> 
+	    <li>列表一列表一列表一列表一</li> 
+	   </ul> 
+	  </div>
+	</body>
+</html>

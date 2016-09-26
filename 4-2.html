@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{margin: 0;padding: 0;	}
+	#ul1{width: 300px;height: 300px;border: 1px solid black;margin: 10px;}
+	#ul1 li{list-style: none;border-bottom: 1px dashed red;padding: 2px;opacity: 0;overflow: hidden;height: 20px;}
+</style>
+<script src="move2.js"></script>
+<script>
+	window.onload=function()
+	{
+		var txt=document.getElementById('txt1');
+		var btn=document.getElementById('btn1');
+		var ul=document.getElementById('ul1');
+		btn.onclick=function(){
+
+			var newLi=document.createElement('li');
+			var li=ul.getElementsByTagName('li');
+			newLi.innerHTML=txt.value;
+			txt.value='';
+			if (li.length) {
+				ul.insertBefore(newLi,li[0]);
+			}
+			else{
+				ul.appendChild(newLi)
+			};
+			newLi.style.height=0;
+			var timer;
+			timer=setInterval(function(){
+				newLi.style.height=parseInt(newLi.style.height)+1+'px';
+				//alert(parseInt(newLi.style.opacity));
+				newLi.style.opacity=1;
+				if (parseInt(newLi.style.height)==20) {
+					clearInterval(timer)
+				}
+			},30)
+
+			
+		}
+
+
+
+		// var txt=document.getElementById('txt1');
+		// var btn=document.getElementById('btn1');
+		// var ul=document.getElementById('ul1');
+		// btn.onclick=function()
+		// {
+		// 	var oli=document.createElement('li');
+		// 	var ali=ul.getElementsByTagName('li');
+
+		// 	oli.innerHTML=txt.value;
+		// 	txt.value='';
+		// 	//ul.appendChild(oli);
+		// 	if (ali.length)
+		// 	 {
+		// 	 	ul.insertBefore(oli,ali[0])
+		// 	 }
+		// 		else 
+		// 		{
+		// 			ul.appendChild(oli);
+		// 		}
+		// 		// iHeight=oli.offsetHeight;
+		// 		//oli.style.height=0;
+		// 		//startMove(oli,{height:iHeight},function(){startMove(oli,{opacity:100})})
+		// }
+	}
+</script>
+<body>
+	<textarea id="txt1" name="" id="" cols="30" rows="10"></textarea>
+	<input id="btn1" type="button" value="发布" />
+	<ul id="ul1">
+		<li>123</li>
+	</ul>
+</body>
+</html>

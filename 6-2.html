@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	#c1{
+		background: #fff;
+	}
+</style>
+<script>
+	window.onload=function(){
+		var c1=document.getElementById('c1');
+
+		var c=c1.getContext('2d');
+
+		// c.beginPath();//一个三角形
+		// c.moveTo(100,100);
+		// c.lineTo(200,200);
+		// c.lineTo(200,100)
+		// c.closePath();
+		// c.stroke()
+
+		c1.onmousedown=function(ev){
+			var ev=ev||event;
+			c.moveTo(ev.clientX-c1.offsetLeft,ev.clientY-c1.offsetTop)
+			document.onmousemove=function(ev){
+				c.lineTo(ev.clientX-c1.offsetLeft,ev.clientY-c1.offsetTop)
+				c.stroke()
+			}
+			document.onmouseup=function(){
+				document.onmouseup=null;
+				document.onmousemove=null;
+			}
+		}
+
+	}
+</script>
+<body style="background: #ccc;">
+	<canvas id="c1" width="600" height="500"></canvas>
+</body>
+</html>

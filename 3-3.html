@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3动画</title>
+</head>
+<style>
+	body,figure,figcaption,h2,p{
+		margin: 0;padding: 0;
+	}
+	figure{
+		position: relative;width: 33.33%;float: left;height: 350px;overflow: hidden;
+	}
+	figcaption{
+		position: absolute;top: 0;left: 0;font-family: "微软雅黑";color: #fff;
+	}
+	
+	.test1 p{
+		transition: all 0.35s;
+	}
+	figure img,span,div{opacity: 0.9;transition: all 0.35s;}
+/*	@media screen and (max-width: 600px) {
+		figure{
+			width: 100%;
+		}	
+	}
+	@media screen and (min-width: 601px) and (max-width: 1000px) {
+		figure{
+			width: 50%;
+		}
+	}
+	@media screen and (min-width: 1001px) {
+		figure{
+			width: 33.33%;
+		}
+	}*/
+
+	.test1 figcaption{
+		
+		top: 20px;
+		left: 20px;
+	}
+
+	.test1 p{
+		padding: 5px;
+	}
+	.test1 p{transform: translate(-120px,0);}
+	.test1 p:nth-of-type(1){
+		transition: all 0.35s;
+	}
+	.test1 p:nth-of-type(2){
+		transition: all 0.7s;
+	}
+	.test1 p:nth-of-type(3){
+		transition: all 1s;
+	}
+	.test1:hover figcaption p{transform: translate(0px,0px);}
+	.test1:hover img{transform: translate(-50px,0px);opacity: 0.6;}
+
+	.test2 div{
+		border: 2px solid #fff;
+		width: 250px;
+		height: 280px;
+		position: absolute;
+		top: 40px;
+		left: 60px;
+		transform: translate(0px,-350px) rotate(0deg);
+		transition: all 0.35s;
+	}
+
+	.test2 h2{
+		margin-top: 50px;
+		margin-left: 80px;
+	}
+	.test2 p{
+		margin-left: 80px;
+		transition: all 0.3s;
+		opacity: 0;
+		transform: translate(0px,50px)
+	}
+
+	.test2:hover figcaption div{
+		transform: translate(0px,0px) rotate(360deg);
+	}
+	.test2:hover figcaption p{
+		opacity: 0.6;transform: translate(0px,0px)
+	}
+	.test2:hover img{
+		opacity: 0.6;transform: translate(-50px,0px);
+	}
+	.test3 h2{
+		margin-top: 50px;
+		margin-left: 80px;
+		transform: skew(90deg);
+		transition: all 0.35s;
+	}
+	.test3 p{
+		margin-left: 80px;
+		transform: skew(90deg);
+		transition: all 0.35s;
+	}
+	.test3:hover h2{
+		transform: skew(0deg);
+	}
+	.test3:hover p{
+		transform: skew(0deg);
+	}
+
+
+	.test4 div{
+		border: 2px solid #fff;
+		width: 250px;
+		height: 250px;
+		position: absolute;
+		top: 40px;
+		left: 60px;
+		transition: all 0.35s;
+		transform: scale(1.2,1.2);
+		opacity: 0;
+	}
+	.test4 img{
+		transform: scale(1,1);
+	}
+	.test4 h2{
+		margin-top: 50px;
+		margin-left: 80px;
+	}
+	.test4 p{
+		margin-left: 80px;
+
+	}
+
+	.test4:hover div{
+		transform: scale(1,1);
+		opacity: 1;
+	}
+	.test4:hover img{
+		transform: scale(1.2,1.2);
+	}
+</style>
+<body>
+	<figure class="test1">
+		<img src="images/img1.jpg" alt="">
+		<figcaption>
+			<h2>图片标题</h2>
+			<p>图片的内容</p>
+			<p>图片的内容</p>
+			<p>图片的内容</p>
+		</figcaption>
+	</figure>
+	<figure class="test2">
+		<img src="images/img3.png" alt="">
+		<figcaption>
+			<h2>图片标题</h2>
+			<p>飞入飞出效果</p>
+			<div></div>
+		</figcaption>
+	</figure>
+	<figure class="test3">
+		<img src="images/img1.jpg" alt="">
+		<figcaption>
+			<h2>扭曲动画</h2>
+			<p>图片的内容</p>
+			<p>图片的内容</p>
+		</figcaption>
+	</figure>
+	<figure class="test4">
+		<img src="images/img3.png" alt="">
+		<figcaption>
+			<h2>图片放大</h2>
+			<p>放大效果</p>
+			<div></div>
+		</figcaption>
+	</figure>
+</body>
+</html>

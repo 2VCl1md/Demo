@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{margin: 0;padding: 0;}
+	.wrap{position: relative;}
+	ul{list-style: none;}
+	ul li{position: absolute;opacity:0;filter: alpha(opacity:0)}
+	.btn{ 
+  height: 16px; 
+  width: 110px;
+}
+	.arrow{position: absolute;font-size: 36px;text-align:center;color: #fff;background-color:rgba(0,0,0,.3);width: 40px;height: 60px;line-height: 60px;	}
+	#prev{top: 260px;}
+	#next{top: 260px;left:750px;}
+	#list{position: absolute;left: 380px;top: 450px;z-index: 1000;}
+	#list span{width: 20px;height: 20px;background: #ccc;border-radius:50%;margin-left: 10px;display: block;float:left;}
+	#list .on{background: red;}
+</style>
+
+<script>
+
+window.onload=function(){
+	var next=document.getElementById('next');
+	var prev=document.getElementById('prev');
+	var ul1=document.getElementsByTagName('ul1');
+	var li=document.getElementsByTagName('li');
+	var list=document.getElementById('list');
+	var span=list.getElementsByTagName('span');
+	var index=0;
+	var timer=null;
+	var num=0;//点击左右按钮的切换
+	var _num=0;//点击原点
+	var pp=false;
+	next.onclick=function(){
+		if (pp==true) {return}
+		fade1()
+		
+	};
+	prev.onclick=function(){
+		if (pp==true) {return}
+		fade2()
+	};
+	for (var i = 0; i < span.length; i++) {
+			span[i]._num=i;
+			span[i].onclick=function(){
+				for (var i = 0; i < span.length; i++) {
+					span[i].className='';
+				}
+				span[this._num].className='on';
+				fade(this._num);
+				index=this._num;
+				num=this._num;console.log(index)
+			}
+	
+		}
+	function fade1(){
+		for (var i = 0; i < li.length; i++) {
+			li[i].index=i;
+			for (var i = 0; i < li.length; i++) {
+				li[i].style.opacity=0;
+			}
+			var alpha=0;
+			clearInterval(timer);
+			timer=setInterval(function(){
+				if (alpha==100) {
+					clearInterval(timer);
+					index++;
+					pp=false;
+				}
+				else{
+					alpha+=10;
+					if (index==2) {index=-1}
+					li[index+1].style.opacity=alpha/100;
+					li[index+1].style.filter='alpha(opacity:'+alpha+')';
+					pp=true;
+				};
+ 				//index++;
+			},30);
+
+		}
+		if (num==2) {num=-1}
+		for (var i = 0; i < span.length; i++) {
+			span[i].num=i;
+			for (var i = 0; i < span.length; i++) {
+				span[i].className='';
+			}
+			span[num+1].className='on';
+		}
+		num++;
+	}
+
+	function fade2(){
+		for (var i = 0; i < li.length; i++) {
+			li[i].index=i;
+			for (var i = 0; i < li.length; i++) {
+				li[i].style.opacity=0;
+			}
+			var alpha=0;
+			clearInterval(timer);
+			timer=setInterval(function(){
+				if (alpha==100) {
+					clearInterval(timer);
+					index--;
+					pp=false;
+				}
+				else{
+					alpha+=10;
+					if (index==0) {index=3}
+					li[index-1].style.filter='alpha(opacity:'+alpha+')';
+					li[index-1].style.opacity=alpha/100;
+					pp=true;
+				};
+			},30);
+		}
+		if (num==0) {num=3}
+		for (var i = 0; i < span.length; i++) {
+			span[i].num=i;
+			for (var i = 0; i < span.length; i++) {
+				span[i].className='';
+			}
+			span[num-1].className='on';
+		}
+		num--;
+	};
+		function fade(a){
+		for (var i = 0; i < li.length; i++) {
+			for (var i = 0; i < li.length; i++) {
+				li[i].style.opacity=0;
+			}
+			var alpha=0;
+			clearInterval(timer);
+			timer=setInterval(function(){
+				if (alpha==100) {
+					clearInterval(timer);
+				
+				}
+				else{
+					alpha+=10;
+					li[a].style.filter='alpha(opacity:'+alpha+')';
+					li[a].style.opacity=alpha/100;
+				};
+			},30);
+		}
+
+	};
+	
+		
+}
+
+
+
+	// $(function(){
+		// function fade1(){
+		// 	if (index==2) {index=-1;};
+			
+		// 	$('.ul1 li').eq(index+1).fadeIn().siblings('li').fadeOut();
+		// 	$('#list span').eq(index+1).addClass('on').siblings('span').removeClass('on');
+			
+		// 	index++;	console.log(index);
+		// }
+		// function fade2(){
+		// 	if (index==0) {index=3;}
+			
+		// 	$('.ul1 li').eq(index-1).fadeIn().siblings('li').fadeOut();
+		// 	$('#list span').eq(index-1).addClass('on').siblings('span').removeClass('on');
+			
+		// 	index--;	console.log(index);
+		// }
+		// 	$('#list span').click(function(){
+		// 		$(this).addClass('on').siblings('span').removeClass('on');
+		// 		var num=$(this).index();
+		// 		$('.ul1 li').eq(num).fadeIn().siblings('li').fadeOut();
+		// 		index=num;
+		// 	})
+		
+	// })
+</script>
+<body style="margin:100px;">
+	<div class="wrap">
+		<ul class="ul1">
+			<li style="opacity: 1;"><img src="images/zna2l9zs.jpg" alt=""></li>
+			<li><img src="images/4n3pzv6l.jpg" alt=""></li>
+			<li><img src="images/b5an8hdo.jpg" alt=""></li>
+		</ul>
+	</div>
+	<div class="btn" style="">
+	<a href="javascript:;" id="prev" class="arrow">&lt;</a>
+   	<a href="javascript:;" id="next" class="arrow">&gt;</a>
+	</div>
+
+	<div id="list">
+		<span class="on"></span>
+		<span></span>
+		<span></span>
+	</div>
+</body>
+</html>

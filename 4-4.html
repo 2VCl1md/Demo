@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+</head>
+<style>
+       * {
+            margin: 0;
+            padding: 0
+        }
+
+        #demo {
+            display: block;
+            width: 400px;
+            height: 255px;
+            margin: 50px;
+            position: relative;
+            border: 1px solid #ccc;
+
+        }
+
+        #small-box {
+            position: relative;
+            z-index: 1;
+
+        }
+
+        #float-box {
+            display: none;
+            width: 160px;
+            height: 120px;
+            position: absolute;
+            background: #ffffcc;
+            border: 1px solid #ccc;
+            filter: alpha(opacity=50);
+            opacity: 0.5;
+            cursor: move;
+        }
+
+        #mark {
+            position: absolute;
+            display: block;
+            width: 400px;
+            height: 255px;
+            background-color: #fff;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            z-index: 10;
+        }
+
+        #big-box {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 460px;
+            width: 400px;
+            height: 300px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+
+        #big-box img {
+            position: absolute;
+            z-index: 5
+        }
+
+</style>
+<script>
+	window.onload=function () {
+		var demo=document.getElementById('demo');
+		var small=document.getElementById('small-box');
+		var float=document.getElementById('float-box');
+		var big=document.getElementById('big-box');
+		var img=big.getElementsByTagName('img')[0];
+		var disX=0;
+		var dixY=0;
+		small.onmouseover=function(ev){
+			float.style.display='block';
+			big.style.display='block';
+
+			
+
+			document.onmousemove=function(ev){
+				event=ev || event;
+
+				var l=event.clientX - demo.offsetLeft - small.offsetLeft - float.offsetWidth / 2;
+
+				var t=event.clientY - demo.offsetTop - small.offsetTop - float.offsetHeight / 2;
+				if (l<0) {
+					l=0;
+				}
+				else if(l>small.offsetWidth-float.offsetWidth){
+					l=small.offsetWidth-float.offsetWidth;
+				}
+				if (t<0) {
+					t=0;
+				}
+				else if(t>small.offsetHeight-float.offsetHeight){
+					t=small.offsetHeight-float.offsetHeight;
+				}
+
+				float.style.left=l+'px';
+				float.style.top=t+'px';
+
+				var percentX=l/(small.offsetWidth-float.offsetWidth);
+				var percentY=t/(small.offsetHeight-float.offsetHeight);
+				
+				img.style.left=-percentX*(img.offsetWidth-big.offsetWidth)+'px';
+				img.style.top=-percentY*(img.offsetHeight-big.offsetHeight)+'px';
+
+			}
+		}
+		small.onmouseout=function(){
+			float.style.display='none';
+			big.style.display='none';
+		}
+	}
+</script>
+<body>
+<div id="demo">
+    <div id="small-box">
+        <div id="float-box"></div>
+        <img src="images/macbook-small.jpg"/>
+    </div>
+    <div id="big-box">
+        <img src="images/macbook-big.jpg"/>
+    </div>
+</div>
+
+</body>
+</html>

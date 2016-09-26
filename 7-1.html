@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<style>
+    .div1{
+        border: 1px dotted #000;
+        background: #ccc;
+        color: green;
+        padding-left: 30px;
+    }
+    #div2,input{
+        font-size: 18px;
+    }
+</style>
+<body>
+    <div class="div1">
+
+        /*定义一个人类*/  <br>
+        function Person(name,age) <br>    
+        {                         <br>  
+            this.name=name;  <br>
+            this.age=age;  <br>
+        }  
+        /*定义一个学生类*/  <br>
+        function Student(name,age,grade)  <br>
+        {  <br>
+           // Person.apply(this,arguments);  <br>
+            Person.call(this,name,age);  <br>
+            this.grade=grade;  <br>
+        }  
+        //创建一个学生类  <br>
+        var student=new Student("zhangsan",21,"一年级");  <br>
+        //测试  <br>
+        console.log("name:"+student.name+"\n"+"age:"+student.age+"\n"+"grade:"+student.grade);  <br>
+    </div>
+    <br>
+    <center>
+        <input id="btn1" type="button" value="输出结果"><br><br>
+        <div id="div2"></div>
+    </center>
+    
+<script>
+    /*定义一个人类*/  
+    function Person(name,age)  
+    {  
+        this.name=name;  
+        this.age=age;  
+    }  
+    /*定义一个学生类*/  
+    function Student(name,age,grade)  
+    {  
+       // Person.apply(this,arguments);  
+        Person.call(this,name,age);  
+        this.grade=grade;  
+    }  
+    //创建一个学生类  
+    var student=new Student("zhangsan",21,"一年级");  
+    //测试  
+    var btn=document.getElementById('btn1');
+    var div2=document.getElementById('div2')
+    btn.onclick=function(){
+        div2.innerHTML="name:"+student.name+"\n"+"age:"+student.age+"\n"+"grade:"+student.grade;
+    }
+    //alert("name:"+student.name+"\n"+"age:"+student.age+"\n"+"grade:"+student.grade);  
+    //大家可以看到测试结果name:zhangsan age:21  grade:一年级  
+    //学生类里面我没有给name和age属性赋值啊,为什么又存在这两个属性的值呢,这个就是apply的神奇之处.  
+    //分析: Person.apply(this,arguments);
+    // this:在创建对象在这个时候代表的是student
+    // arguments:是一个数组,也就是[“zhangsan”,”21”,”一年级”];
+    //  也就是通俗一点讲就是:用student去执行Person这个类里面的内容,
+    //  在Person这个类里面存在this.name等之类的语句,这样就将属性创建到了student对象里面
+</script>
+</body>
+</html>
