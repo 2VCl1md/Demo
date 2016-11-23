@@ -18,24 +18,25 @@
 </style>
 <body>
     <div class="div1">
-
-        /*定义一个人类*/  <br>
-        function Person(name,age) <br>    
-        {                         <br>  
-            this.name=name;  <br>
-            this.age=age;  <br>
+        <pre>
+        /*定义一个人类*/  
+        function Person(name,age)    
+        {                          
+            this.name=name;  
+            this.age=age;  
         }  
-        /*定义一个学生类*/  <br>
-        function Student(name,age,grade)  <br>
-        {  <br>
-           // Person.apply(this,arguments);  <br>
-            Person.call(this,name,age);  <br>
-            this.grade=grade;  <br>
+        /*定义一个学生类*/  
+        function Student(name,age,grade)  
+        {  
+           // Person.apply(this,arguments);  
+            Person.call(this,name,age);  
+            this.grade=grade;  
         }  
-        //创建一个学生类  <br>
-        var student=new Student("zhangsan",21,"一年级");  <br>
-        //测试  <br>
-        console.log("name:"+student.name+"\n"+"age:"+student.age+"\n"+"grade:"+student.grade);  <br>
+        //创建一个学生类  
+        var student=new Student("zhangsan",21,"一年级");  
+        //测试  
+        console.log("name:"+student.name+"\n"+"age:"+student.age+"\n"+"grade:"+student.grade);  
+        </pre>
     </div>
     <br>
     <center>
